@@ -1,0 +1,49 @@
+# version: "3"
+# services:
+#   mysql:
+#     container_name: mysql
+#     image: mysql
+#     ports:
+#       - 80:80
+#     environment:
+#         MYSQL_USER: root
+#         MYSQL_DATABASE: cnv
+#         MYSQL_PASSWORD: root
+#         MYSQL_ROOT_PASSWORD: root
+#     #   MYSQL_ROOT_PASSWORD: 1234
+#     #   MYSQL_ROOT_HOST: '%'
+#     #   MYSQL_DATABASE: cnv
+#   api:
+#     container_name: simple-cnv
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     environment:
+#       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:80/cnv?autoReconnect=true&useSSL=false
+#     #   MYSQL_ADDRESS: mysql
+#     #   MYSQL_USERNAME: kth
+#     #   MYSQL_PASSWORD: 1234
+#     ports:
+#       - 8070:8070
+#     restart: always
+#     links:
+#       - mysql
+#     depends_on:
+#       - mysql
+
+version: "3"
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: cnv
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306 
+  api:
+    build: .
+    ports:
+      - 8070:8070
+    depends_on:
+      - db

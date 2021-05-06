@@ -31,19 +31,19 @@
 #     depends_on:
 #       - mysql
 
-version: "3"
-services:
-  db:
-    image: mysql
-    environment:
-      MYSQL_DATABASE: cnv
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_ROOT_HOST: '%'
-    ports:
-      - 3306:3306 
-  api:
-    build: .
-    ports:
-      - 8070:8070
-    depends_on:
-      - db
+# version: "3"
+# services:
+#   db:
+#     image: mysql
+#     environment:
+#       MYSQL_DATABASE: cnv
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_ROOT_HOST: '%'
+#     ports:
+#       - 3306:3306 
+#   api:
+#     build: .
+#     ports:
+#       - 8071:8070
+#     depends_on:
+#       - db
